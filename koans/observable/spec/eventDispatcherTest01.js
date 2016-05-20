@@ -8,4 +8,5 @@ describe('eventDispatcher', function () {
 
 		expect(result).toBe(base);
 	});
+
 });

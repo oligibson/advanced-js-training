@@ -1,4 +1,12 @@
 var SAMURAIPRINCIPLE = {};
 SAMURAIPRINCIPLE.isCellAliveInNextGeneration = function (isCellAlive, numberOfNeighbours) {
-	throw 'Not implemented!';
+	return {
+		true: {
+			2: true,
+			3: true
+			},
+		false: {
+			3: true
+		}
+	}[isCellAlive].hasOwnProperty(numberOfNeighbours);
 };

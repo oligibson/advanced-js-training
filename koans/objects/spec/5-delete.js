@@ -18,8 +18,8 @@ describe('Delete', function () {
 	it('1 - should understand delete operator', function () {
 		var result;
 		result = delete samurai.name;
-		expect(result).toBe(__);
-		expect(samurai.name).toBe(__);
+		expect(result).toBe(true);
+		expect(samurai.name).toBe(undefined);
 	});
 	it('2 - should understand delete operator vs. setting property value to undefined', function () {
 		var object = {
@@ -28,62 +28,62 @@ describe('Delete', function () {
 
 		properties = '';
 		object.propertyName = undefined;
-		expect(object.propertyName).toBe(__);
+		expect(object.propertyName).toBe(undefined);
 		for (name in object) {
 			properties += name;
 		}
-		expect(properties).toBe(__);
+		expect(properties).toBe('propertyName');
 
 		properties = '';
 		delete object.propertyName;
-		expect(object.propertyName).toBe(__);
+		expect(object.propertyName).toBe(undefined);
 		for (name in object) {
 			properties += name;
 		}
-		expect(properties).toBe(__);
+		expect(properties).toBe('');
 		//Discuss this with your pair
 		//Imagine using object as a read through cache - how would you manage the size of the cache?
 	});
 	it('3 - should understand how execution context affects delete operator', function () {
-		expect(a).toBe(__);
-		expect(window.a).toBe(__);
-		expect(delete a).toBe(__);
-		expect(b).toBe(__);
-		expect(window.b).toBe(__);
-		expect(delete b).toBe(__);
-		expect(c).toBe(__);
-		expect(window.c).toBe(__);
-		expect(delete c).toBe(__);
-		expect(d).toBe(__);
-		expect(window.d).toBe(__);
-		expect(delete d).toBe(__);
+		expect(a).toBe(1);
+		expect(window.a).toBe(1);
+		expect(delete a).toBe(false);
+		expect(b).toBe(2);
+		expect(window.b).toBe(2);
+		expect(delete b).toBe(true);
+		expect(c).toBe(3);
+		expect(window.c).toBe(3);
+		expect(delete c).toBe(true);
+		expect(d).toBe(4);
+		expect(window.d).toBe(4);
+		expect(delete d).toBe(true);
 	});
 	it('4 - should understand how execution context affects delete operator', function () {
 		var e = 1;
 		f = 2;
 		eval('var g = 3;');
 		eval('h = 4;');
-		expect(e).toBe(__);
-		expect(window.e).toBe(__);
-		expect(delete e).toBe(__);
-		expect(f).toBe(__);
-		expect(window.f).toBe(__);
-		expect(delete f).toBe(__);
-		expect(g).toBe(__);
-		expect(window.g).toBe(__);
-		expect(delete g).toBe(__);
-		expect(h).toBe(__);
-		expect(window.h).toBe(__);
-		expect(delete h).toBe(__);
+		expect(e).toBe(1);
+		expect(window.e).toBe(undefined);
+		expect(delete e).toBe(false);
+		expect(f).toBe(2);
+		expect(window.f).toBe(2);
+		expect(delete f).toBe(true);
+		expect(g).toBe(3);
+		expect(window.g).toBe(undefined);
+		expect(delete g).toBe(true);
+		expect(h).toBe(4);
+		expect(window.h).toBe(4);
+		expect(delete h).toBe(true);
 	});
 	it('5 - should understand delete operator', function () {
 		samurai.samurai = samurai;
 		delete samurai.samurai.samurai;
-		expect(samurai.samurai).toBe(__);
+		expect(samurai.samurai).toBe(undefined);
 	});
 	it('6 - should understand delete operator', function () {
 		samurai.samurai = samurai;
 		delete samurai.samurai.name;
-		expect(samurai.name).toBe(__);
+		expect(samurai.name).toBe(undefined);
 	});
 });

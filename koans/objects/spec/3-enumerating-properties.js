@@ -23,8 +23,8 @@ describe('Enumerating properties', function () {
 				enumerableProperties += 1;
 			}
 		}
-		expect(properties).toBe(__);
-		expect(ownProperties).toBe(__);
-		expect(enumerableProperties).toBe(__);
+		expect(properties).toBe(4);
+		expect(ownProperties).toBe(4);
+		expect(enumerableProperties).toBe(4);
 	});
 });

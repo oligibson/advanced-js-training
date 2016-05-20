@@ -4,7 +4,7 @@ describe('Arrays - iteration methods', function () {
 		var array = [1, 2, 3, 4, 5, 4, 3, 2, 1];
 		expect(array.filter(function (element) {
 			return element <= 3;
-		})).toEqual(__);
+		})).toEqual([1, 2, 3, 3, 2, 1]);
 	});
 	it('2 - should understand filter with this', function () {
 		var array = [1, 2, 3, 4, 5, 4, 3, 2, 1], THIS = {};
@@ -16,8 +16,8 @@ describe('Arrays - iteration methods', function () {
 				return true;
 			}
 			//return this[element] ? false : this[element] = true;
-		}, THIS)).toEqual(__);
-		expect(THIS).toEqual(__);
+		}, THIS)).toEqual([1, 2, 3, 4, 5]);
+		expect(THIS).toEqual({ 1 : true, 2 : true, 3 : true, 4 : true, 5 : true });
 	});
 	it('3 - should understand forEach', function () {
 		var array = [1, 2, 3, 4, 5], result = 0;
@@ -80,7 +80,7 @@ describe('Arrays - iteration methods', function () {
 	});
 	it('11 - should understand map and parseInt', function () {
 		var result = ['1', '2', '3'].map(parseInt);
-		expect(result).toEqual(__);
+		expect(result).toEqual([1, NaN, NaN]);
 		//discuss with your pair
 	});
 });

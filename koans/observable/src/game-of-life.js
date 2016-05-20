@@ -7,6 +7,7 @@ SAMURAIPRINCIPLE.GameOfLife = function () {
 		cellKey = function (row, column) {
 			return row + '_' + column;
 		};
+	SAMURAIPRINCIPLE.eventDispatcher(self);
 	this.isCellAlive = function (row, column) {
 		return isAlive[cellKey(row, column)] || false;
 	};
@@ -17,6 +18,7 @@ SAMURAIPRINCIPLE.GameOfLife = function () {
 		} else {
 			isAlive[key] = true;
 		}
+		self.dispatchEvent('cellStateChanged', row, column, !!isAlive[key]);
 		return this;
 	};
 	this.tick = function () {
@@ -47,6 +49,19 @@ jQuery.fn.extend({
 		'use strict';
 		return this.each(function () {
 			var rootElement = jQuery(this);
+			$('.grid').on('click', function(){
+				gameOfLife.toggleCellState(3,4, {});
+			});
+
+			$('.tick').on('click', function(){
+				gameOfLife.tick();
+			});
+
+			gameOfLife.addEventListener('cellStateChanged', function(row, col, alive){
+				rootElement.find('.grid tr:nth-child(' + (row + 1)  + ') td:nth-child(' + (col + 1) + ')').toggleClass('alive', animationDuration);
+			});
+
+
 		});
 	}
 });
